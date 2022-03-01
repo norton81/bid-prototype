@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "projects": {
+    "donor": "apps/donor",
+    "donor-e2e": "apps/donor-e2e",
+    "recipient": "apps/recipient",
+    "recipient-e2e": "apps/recipient-e2e",
+    "shared": "libs/shared"
+  }
+}

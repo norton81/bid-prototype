@@ -1,0 +1,91 @@
+{
+  "projectType": "application",
+  "root": "apps/donor",
+  "sourceRoot": "apps/donor/src",
+  "prefix": "monorepo",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/donor",
+        "index": "apps/donor/src/index.html",
+        "main": "apps/donor/src/main.ts",
+        "polyfills": "apps/donor/src/polyfills.ts",
+        "tsConfig": "apps/donor/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": ["apps/donor/src/favicon.ico", "apps/donor/src/assets"],
+        "styles": ["apps/donor/src/styles.scss"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/donor/src/environments/environment.ts",
+              "with": "apps/donor/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "donor:build:production"
+        },
+        "development": {
+          "browserTarget": "donor:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "donor:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/donor/src/**/*.ts",
+          "apps/donor/src/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/donor"],
+      "options": {
+        "jestConfig": "apps/donor/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
