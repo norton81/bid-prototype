@@ -10,6 +10,7 @@ import {MatInputModule} from "@angular/material/input";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatButtonModule} from "@angular/material/button";
 import {MatCheckboxModule} from "@angular/material/checkbox";
+import {FeaturesResolverService} from "./services/features-resolver.service";
 
 
 @NgModule({
@@ -25,7 +26,9 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
     MatButtonModule,
     MatCheckboxModule,
   ],
-  providers: [],
+  providers: [
+    {provide: 'DEPENDENCY_RESOLVER', useClass: FeaturesResolverService},
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

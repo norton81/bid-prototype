@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { SharedModule } from "@monorepo/shared";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppRoutingModule } from "./app.routing.module";
+import {FeaturesResolverService} from "./services/features-resolver.service";
 
 @NgModule({
   declarations: [AppComponent],
@@ -14,7 +15,9 @@ import { AppRoutingModule } from "./app.routing.module";
     AppRoutingModule,
     SharedModule
   ],
-  providers: [],
+  providers: [
+    {provide: 'DEPENDENCY_RESOLVER', useClass: FeaturesResolverService},
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

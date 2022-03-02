@@ -1,9 +1,19 @@
-import {ChangeDetectorRef, Component, ComponentRef, Injector, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  ComponentRef, Inject,
+  Injector,
+  OnInit,
+  Optional,
+  ViewChild,
+  ViewContainerRef
+} from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import {FormBuilder, FormControl} from "@angular/forms";
 import {IFeature, SharedFeature2Component} from "@monorepo/shared";
 import {SharedFeature1Component} from "@monorepo/shared";
 import {SharedFeature3Component} from "@monorepo/shared";
+import {FeaturesResolverService} from "../../services/features-resolver.service";
 
 @Component({
   selector: 'monorepo-entity1-form',
@@ -16,6 +26,7 @@ export class Entity1FormComponent implements OnInit {
       private fb: FormBuilder,
       private injector: Injector,
       private changeDetectorRef: ChangeDetectorRef,
+      @Optional() @Inject('DEPENDENCY_RESOLVER') private dynamicResolver: FeaturesResolverService,
   ) {}
 
   @ViewChild('container', {read: ViewContainerRef}) container: ViewContainerRef | undefined;
@@ -29,11 +40,12 @@ export class Entity1FormComponent implements OnInit {
   });
   public model: any = {};
 
-  ngOnInit(): void {
-    setTimeout(() => {
-      this.initFeatures();
-      this.changeDetectorRef.detectChanges();
-    });
+  async ngOnInit() {
+    this.dynamicComponents =
+        await this.dynamicResolver.getDynamicComponents(this.dynamicComponents);
+
+    this.initFeatures();
+    this.changeDetectorRef.detectChanges();
   }
 
   public submit() {
