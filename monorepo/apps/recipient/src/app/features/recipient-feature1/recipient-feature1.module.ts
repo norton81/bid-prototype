@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ClientFeature2Component } from './client-feature2.component';
+import { RecipientFeature1Component } from './recipient-feature1.component';
 
 
 
 @NgModule({
   declarations: [
-    ClientFeature2Component
+    RecipientFeature1Component
   ],
   imports: [
     CommonModule
   ]
 })
-export class ClientFeature2Module { }
+export class RecipientFeature1Module { }
