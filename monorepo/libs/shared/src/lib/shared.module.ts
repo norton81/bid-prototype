@@ -4,6 +4,6 @@ import { SharedComponentsModule } from "./components/shared-components.module";
 
 @NgModule({
   imports: [CommonModule, SharedComponentsModule],
-  exports: [SharedComponentsModule]
+    exports: [SharedComponentsModule]
 })
 export class SharedModule {}
