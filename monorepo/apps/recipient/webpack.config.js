@@ -40,12 +40,16 @@ module.exports = {
         //     "donor": "http://localhost:5000/remoteEntry.js",
 
         // },
-
+      // For hosts (please adjust)
+        remotes: {
+          "donor": "http://localhost:5000/donorRemoteEntry.js",
+        },
         shared: share({
           "@angular/core": { singleton: true, strictVersion: true, requiredVersion: 'auto' }, 
           "@angular/common": { singleton: true, strictVersion: true, requiredVersion: 'auto' }, 
           "@angular/common/http": { singleton: true, strictVersion: true, requiredVersion: 'auto' }, 
           "@angular/router": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
+          "@angular/material": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
 
           ...sharedMappings.getDescriptors()
         })
