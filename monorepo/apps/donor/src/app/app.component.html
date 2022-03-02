@@ -1,26 +1,18 @@
 <div>
     <div class="header">
-        <mat-toolbar color="primary">
-            <mat-toolbar-row>
-                <button mat-icon-button>
-                    <mat-icon>menu</mat-icon>
-                </button>
-                <span class="spacer"></span>
-                <span>DONOR</span>
-            </mat-toolbar-row>
-        </mat-toolbar>
+        <shared-header [appName]="'Donor'"></shared-header>
     </div>
-    <div class="content" style="display: flex">
+    <div class="content">
         <div class="left-side">
             <shared-menu (navigate)="navigate($event)" [nodes]="configService.config.menu.nodes"></shared-menu>
         </div>
-        <div class="right-side" style=" background-color: #eaeef5; height: 1777px">
-            <div style="border: 1px solid lightgrey; background-color: white; height: 100%; width: 100%; padding: 15px  ">
-            <router-outlet></router-outlet>
-            <mat-form-field style="width: 200px" class="example-full-width" appearance="outline">
-                <mat-label>Favorite food</mat-label>
-                <input color="primary" matInput placeholder="Ex. Pizza" value="Sushi">
-            </mat-form-field>
+        <div class="right-side">
+            <div class="card">
+                <router-outlet></router-outlet>
+                <mat-form-field style="width: 200px" class="example-full-width" appearance="outline">
+                    <mat-label>Favorite food</mat-label>
+                    <input color="primary" matInput placeholder="Ex. Pizza" value="Sushi">
+                </mat-form-field>
             </div>
         </div>
     </div>

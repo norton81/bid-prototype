@@ -6,9 +6,6 @@
   opacity: 0.9;
 }
 
-.spacer {
-  flex: 1 1 auto;
-}
 .content {
   display: flex;
   padding-top: 64px;
@@ -24,8 +21,14 @@
   padding: 25px;
   flex-grow: 3;
   display: flex;
+  background-color: #eaeef5;
+  height: 1000px;
+}
+.card {
+  border: 1px solid lightgrey;
+  background-color: white;
+  height: 100%;
+  width: 100%;
+  padding: 15px;
 }
 
-.example-tree div[role=group] > .mat-tree-node {
-  padding-left: 20px;
-}
