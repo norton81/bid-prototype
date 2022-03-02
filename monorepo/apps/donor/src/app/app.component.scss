@@ -1,0 +1,47 @@
+.header {
+  background: cadetblue;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  opacity: 0.9;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+.content {
+  display: flex;
+  padding-top: 64px;
+}
+
+.left-side {
+  width: 300px;
+  display: flex;
+}
+
+.right-side {
+  flex-grow: 3;
+  display: flex;
+}
+
+.example-form {
+  min-width: 150px;
+  max-width: 200px;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.example-tree .mat-nested-tree-node div[role=group] {
+  padding-left: 20px;
+}
+
+.example-tree div[role=group] > .mat-tree-node {
+  padding-left: 20px;
+}
+
+.example-tree-invisible {
+  display: none;
+}
