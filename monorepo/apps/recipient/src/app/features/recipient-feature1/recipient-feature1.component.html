@@ -1,1 +1,20 @@
-<p>recipient-feature1 works!</p>
+<h2>Recipient Feature1</h2>
+<div [formGroup]="form" style="padding: 10px">
+    <div>
+        <mat-form-field class="field" appearance="outline">
+            <mat-label>Recipient Field 1</mat-label>
+            <input formControlName="field1" color="primary" matInput placeholder="Field2" value="1">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field class="field" appearance="outline">
+            <mat-label>Recipient Field 2</mat-label>
+            <textarea matInput
+                      formControlName="field2"
+                      cdkTextareaAutosize
+                      #autosize="cdkTextareaAutosize"
+                      cdkAutosizeMinRows="1"
+                      cdkAutosizeMaxRows="5"></textarea>
+        </mat-form-field>
+    </div>
+</div>

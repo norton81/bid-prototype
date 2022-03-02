@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import {ClientFeature2Component} from "../features/client-feature2/client-feature2.component";
-import {ClientFeature1Component} from "../features/client-feature1/client-feature1.component";
+import {RecipientFeature2Component} from "../features/recipient-feature2/recipient-feature2.component";
+import {RecipientFeature1Component} from "../features/recipient-feature1/recipient-feature1.component";
 
 @Injectable()
 export class FeaturesResolverService {
   async getDynamicComponents(components: any[]) {
-    const result = [...components, ClientFeature2Component, ClientFeature1Component]
+    const result = [RecipientFeature1Component, components[1], components[2], RecipientFeature2Component]
     return Promise.resolve(result);
   };
 }

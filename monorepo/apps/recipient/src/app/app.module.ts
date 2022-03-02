@@ -6,6 +6,7 @@ import { SharedModule } from "@monorepo/shared";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppRoutingModule } from "./app.routing.module";
 import {FeaturesResolverService} from "./services/features-resolver.service";
+import {RecipientFeature1Module} from "./features/recipient-feature1/recipient-feature1.module";
 
 @NgModule({
   declarations: [AppComponent],
@@ -13,7 +14,8 @@ import {FeaturesResolverService} from "./services/features-resolver.service";
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    SharedModule
+    SharedModule,
+    RecipientFeature1Module
   ],
   providers: [
     {provide: 'DEPENDENCY_RESOLVER', useClass: FeaturesResolverService},
