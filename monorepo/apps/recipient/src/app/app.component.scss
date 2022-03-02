@@ -1,0 +1,33 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  opacity: 0.9;
+}
+
+.content {
+  display: flex;
+  padding-top: 64px;
+}
+
+.left-side {
+  width: 200px;
+  display: flex;
+  border: solid 1px lightgray;
+}
+
+.right-side {
+  padding: 25px;
+  flex-grow: 3;
+  display: flex;
+  background-color: #eaeef5;
+  height: 1000px;
+}
+.card {
+  border: 1px solid lightgrey;
+  background-color: white;
+  height: 100%;
+  width: 100%;
+  padding: 15px;
+}

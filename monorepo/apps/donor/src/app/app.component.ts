@@ -14,7 +14,6 @@ export class AppComponent {
   }
 
   navigate(node: SharedMenuNode) {
-    debugger
     this.router.navigate([node.rout])
   }
 }

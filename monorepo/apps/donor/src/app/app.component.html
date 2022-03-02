@@ -1,10 +1,13 @@
 <div>
     <div class="header">
-        <shared-header [appName]="'Donor'"></shared-header>
+        <shared-header appName="Donor"></shared-header>
     </div>
     <div class="content">
         <div class="left-side">
-            <shared-menu (navigate)="navigate($event)" [nodes]="configService.config.menu.nodes"></shared-menu>
+            <shared-menu
+                    (navigate)="navigate($event)"
+                    [nodes]="configService.config.menu.nodes">
+            </shared-menu>
         </div>
         <div class="right-side">
             <div class="card">

@@ -33,14 +33,5 @@ $theme: mat.define-light-theme((
 // that you are using.
 @include mat.all-component-themes($theme);
 
-/*$default-app-theme: (
-        indigo: (
-                50: #eef2ff,
-                100: #e0e7ff,
-                200: #c7d2fe,
-        ),
-);
-@include mat.all-component-themes($default-app-theme);*/
-
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
