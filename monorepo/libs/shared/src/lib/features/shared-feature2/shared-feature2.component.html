@@ -1,0 +1,21 @@
+<h3>Shared Feature2</h3>
+
+<div [formGroup]="form" style="padding: 10px">
+    <div formGroupName="group">
+        <div>
+            <mat-form-field style="width: 200px" appearance="outline">
+                <mat-label>Field1</mat-label>
+                <input formControlName="field1" color="primary" matInput placeholder="FIO" value="Sushi">
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field style="width: 200px" appearance="outline">
+                <mat-label>Field2</mat-label>
+                <input formControlName="field2" color="primary" matInput placeholder="FIO" value="Sushi">
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-checkbox formControlName="field3">action</mat-checkbox>
+        </div>
+    </div>
+</div>

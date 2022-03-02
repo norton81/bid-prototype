@@ -6,6 +6,8 @@ import { Entity1FormComponent } from './components/entity1-form.component';
 import { Entity1ListComponent } from './components/entity1-list.component';
 import { RouterModule } from "@angular/router";
 import { SharedModule } from "@monorepo/shared";
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatButtonModule} from "@angular/material/button";
 
 
 @NgModule({
@@ -18,7 +20,9 @@ import { SharedModule } from "@monorepo/shared";
     CommonModule,
     Entity1RoutingModule,
     RouterModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule,
+    MatButtonModule,
   ]
 })
 export class Entity1Module { }

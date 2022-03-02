@@ -4,8 +4,7 @@ import { SharedFeature1Component } from './shared-feature1.component';
 import { MatInputModule } from "@angular/material/input";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatButtonModule } from "@angular/material/button";
-
-
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -16,6 +15,7 @@ import { MatButtonModule } from "@angular/material/button";
     MatInputModule,
     MatFormFieldModule,
     MatButtonModule,
+    ReactiveFormsModule,
   ],
   exports: [SharedFeature1Component]
 })

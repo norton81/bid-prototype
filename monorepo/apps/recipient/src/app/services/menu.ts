@@ -2,31 +2,31 @@ import { SharedMenuNode } from "@monorepo/shared";
 
 export const MENU_DATA: SharedMenuNode[] = [
     {
-        name: 'EntitiesGroup1',
+        name: 'Rec_EntitiesGroup1',
         children: [
             {
-                name: 'Entities1',
-                rout: 'entities1',
+                name: 'Rec_Entities1',
+                rout: 'rec_entities1',
             },
             {
-                name: 'Entities2',
-                rout: 'entities2',
+                name: 'Rec_Entities2',
+                rout: 'rec_entities2',
             },
             {
-                name: 'Entities3',
-                rout: 'entities3',
+                name: 'Rec_Entities3',
+                rout: 'rec_entities3',
             }],
     },
     {
-        name: 'EntitiesGroup2',
+        name: 'Rec_EntitiesGroup2',
         children: [
             {
-                name: 'Entities4',
-                rout: 'entities4',
+                name: 'Rec_Entities4',
+                rout: 'rec_entities4',
             },
             {
-                name: 'Entities5',
-                rout: 'entities5',
+                name: 'Rec_Entities5',
+                rout: 'rec_entities5',
             },
         ],
     },

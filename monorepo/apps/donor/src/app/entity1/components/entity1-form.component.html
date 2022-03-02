@@ -1,3 +1,12 @@
 <h2>entity1-form works!</h2>
 <h1 style="text-transform: uppercase;">{{route.snapshot.params['mode']}}</h1>
-<shared-feature1></shared-feature1>
+<form [formGroup]="form" style="border: 1px solid darkgray; padding: 10px">
+    <ng-container #container></ng-container>
+    <button type="submit" mat-flat-button
+            color="primary"
+            [disabled]="bus.get('submitDisabled')?.value"
+            (click)='submit()'>apply action</button>
+    <div>
+        {{form.value | json}}/{{bus.get('submitDisabled')?.value | json}}
+    </div>
+</form>
