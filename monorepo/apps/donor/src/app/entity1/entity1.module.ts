@@ -8,6 +8,7 @@ import { RouterModule } from "@angular/router";
 import { SharedModule } from "@monorepo/shared";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatButtonModule} from "@angular/material/button";
+import {MatFormFieldModule} from "@angular/material/form-field";
 
 
 @NgModule({
