@@ -4,7 +4,8 @@ import { Entity1Component } from './entity1.component';
 import { Entity1RoutingModule } from "./entity1-routing.module";
 import { Entity1FormComponent } from './components/entity1-form.component';
 import { Entity1ListComponent } from './components/entity1-list.component';
-import {RouterModule} from "@angular/router";
+import { RouterModule } from "@angular/router";
+import { SharedModule } from "@monorepo/shared";
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import {RouterModule} from "@angular/router";
     CommonModule,
     Entity1RoutingModule,
     RouterModule,
+    SharedModule
   ]
 })
 export class Entity1Module { }
