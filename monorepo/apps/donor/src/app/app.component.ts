@@ -17,11 +17,11 @@ const TREE_DATA: Node[] = [
     children: [
       {
         name: 'Green',
-        children: [{name: 'Broccoli'}, {name: 'Brussels sprouts'}],
+        /*children: [{name: 'Broccoli'}, {name: 'Brussels sprouts'}],*/
       },
       {
         name: 'Orange',
-        children: [{name: 'Pumpkins'}, {name: 'Carrots'}],
+        /*children: [{name: 'Pumpkins'}, {name: 'Carrots'}],*/
       },
     ],
   },
