@@ -8,7 +8,7 @@ import { RouterModule } from "@angular/router";
 import { SharedModule } from "@monorepo/shared";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatButtonModule} from "@angular/material/button";
-import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatTableModule} from "@angular/material/table";
 
 
 @NgModule({
@@ -24,6 +24,7 @@ import {MatFormFieldModule} from "@angular/material/form-field";
     SharedModule,
     ReactiveFormsModule,
     MatButtonModule,
+    MatTableModule,
   ]
 })
 export class Entity1Module { }
