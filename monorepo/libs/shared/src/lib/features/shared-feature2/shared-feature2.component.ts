@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Inject, Input, OnInit, Optional, Output} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {IFeature} from "@monorepo/shared";
 
@@ -7,11 +7,15 @@ import {IFeature} from "@monorepo/shared";
   templateUrl: './shared-feature2.component.html',
   styleUrls: ['./shared-feature2.component.scss']
 })
-export class SharedFeature2Component implements OnInit, IFeature {
-  @Input() form: FormGroup = new FormGroup({});
-  @Input() bus: FormGroup;
-  @Input() model: any;
-  @Output() changed = new EventEmitter<any>();
+export class SharedFeature2Component implements OnInit {
+  constructor(
+      @Optional() @Inject('DYNAMIC_FORM') public form: FormGroup,
+      @Optional() @Inject('DYNAMIC_FORM_CALLBACK') private callback: Function,
+      @Optional() @Inject('DYNAMIC_FORM_MODEL') private model: Object,
+      @Optional() @Inject('DYNAMIC_FORM_SYNC_BUS') public bus: FormGroup,
+  ) {
+    debugger
+  }
 
   ngOnInit() {
     this.form?.addControl('group', new FormGroup({

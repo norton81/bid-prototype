@@ -13,7 +13,7 @@ import {FormBuilder, FormControl} from "@angular/forms";
 import {IFeature, SharedFeature2Component} from "@monorepo/shared";
 import {SharedFeature1Component} from "@monorepo/shared";
 import {SharedFeature3Component} from "@monorepo/shared";
-import {FeaturesResolverService} from "../../services/features-resolver.service";
+import {FeaturesResolverService} from "../../../services/features-resolver.service";
 
 @Component({
   selector: 'monorepo-entity1-form',
@@ -27,12 +27,20 @@ export class Entity1FormComponent implements OnInit {
       private injector: Injector,
       private changeDetectorRef: ChangeDetectorRef,
       @Optional() @Inject('DEPENDENCY_RESOLVER') private dynamicResolver: FeaturesResolverService,
-  ) {}
-
-  @ViewChild('container', {read: ViewContainerRef}) container: ViewContainerRef | undefined;
+  ) {
+    this.dynamicInjector = Injector.create({
+      providers: [
+        {provide: 'DYNAMIC_FORM', useValue: this.form},
+        {provide: 'DYNAMIC_FORM_CALLBACK', useValue: this.form},
+        {provide: 'DYNAMIC_FORM_SYNC_BUS', useValue: this.bus},
+        {provide: 'DYNAMIC_FORM_MODEL', useValue: this.model},
+      ],
+      parent: this.injector,
+    });
+  }
 
   dynamicComponents = [SharedFeature1Component, SharedFeature2Component, SharedFeature3Component];
-  componentsRefs: ComponentRef<any>[] = [];
+  dynamicInjector: Injector;
 
   public form = this.fb.group({});
   public bus = this.fb.group({
@@ -40,42 +48,16 @@ export class Entity1FormComponent implements OnInit {
   });
   public model: any = {};
 
-  async ngOnInit() {
+  ngOnInit() {
     this.dynamicComponents =
-        await this.dynamicResolver.getDynamicComponents(this.dynamicComponents);
+        this.dynamicResolver.getDynamicComponents(this.dynamicComponents);
+  }
 
-    this.initFeatures();
+  ngAfterViewInit() {
     this.changeDetectorRef.detectChanges();
   }
 
   public submit() {
     console.log('FORM IS INVALID');
   }
-
-  private initFeatures() {
-    this.container?.clear();
-    this.dynamicComponents.forEach((component)=>{
-      this.createComponent(component);
-    })
-  }
-
-  private createComponent(component: any) {
-    Injector.create({
-      providers: [],
-      parent: this.injector,
-    });
-
-    const componentRef = this?.container?.createComponent<IFeature>(component, {
-      injector: this.injector
-    });
-
-    if(componentRef) {
-      componentRef.instance.form = this.form;
-      componentRef.instance.bus = this.bus;
-      componentRef.instance.model = this.model;
-      /*componentRef.instance.changed.subscribe(this.featureChanged.bind(this));*/
-      this.componentsRefs.push(componentRef);
-    }
-  }
-
 }
