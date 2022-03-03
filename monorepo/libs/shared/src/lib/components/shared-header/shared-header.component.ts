@@ -7,7 +7,8 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class SharedHeaderComponent implements OnInit {
 
-  @Input() appName: string = ';'
+  @Input() appName: string = '';
+  @Input() color: 'accent' | 'warn' | 'primary' = 'primary';
 
   constructor() { }
 
