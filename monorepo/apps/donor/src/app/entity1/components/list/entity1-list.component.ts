@@ -1,15 +1,46 @@
-import {Component, Injector, OnInit, Type} from '@angular/core';
-import {SharedFeatureSimpleCellComponent} from "@monorepo/shared";
+import {Component, Inject, Injector, OnInit, Optional, Type} from '@angular/core';
+import {
+  ENTITY1_COLUMN_FEATURE_RESOLVER,
+  ENTITY1_FEATURE_RESOLVER,
+  SharedFeatureSimpleCellComponent,
+  TableDescriptor
+} from "@monorepo/shared";
 import {SharedFeatureSimpleColumnComponent} from "@monorepo/shared";
 import {DYNAMIC_TABLE_DESCRIPTOR, DYNAMIC_TABLE_ELEMENT} from "@monorepo/shared";
+import {Entity1ColumnFeatureResolverService} from "../../services/entity1-column-feature-resolver.service";
 
-export interface TableDescriptor {
-  cellComponent: Type<any>;
-  columnComponent: Type<any>;
-  columnText: string;
-  columnDef: string;
-  propertyPath: string;
-}
+
+const TABLE_DESCRIPTORS = [
+  {
+    cellComponent: SharedFeatureSimpleCellComponent,
+    columnComponent: SharedFeatureSimpleColumnComponent,
+    columnText: 'Column1',
+    columnDef: 'column1',
+    propertyPath: 'field1',
+  },
+  {
+    cellComponent: SharedFeatureSimpleCellComponent,
+    columnComponent: SharedFeatureSimpleColumnComponent,
+    columnText: 'Column2',
+    columnDef: 'column2',
+    propertyPath: 'field2',
+  },
+  {
+    cellComponent: SharedFeatureSimpleCellComponent,
+    columnComponent: SharedFeatureSimpleColumnComponent,
+    columnText: 'Column3',
+    columnDef: 'column3',
+    propertyPath: 'field3',
+  },
+  {
+    cellComponent: SharedFeatureSimpleCellComponent,
+    columnComponent: SharedFeatureSimpleColumnComponent,
+    columnText: 'Column4',
+    columnDef: 'column4',
+    propertyPath: 'field4',
+  },
+];
+
 
 const ELEMENT_DATA: any[] = [
   {field1: 1, field2: 'Hydrogen', field3: 1.0079, field4: 'H'},
@@ -30,45 +61,18 @@ const ELEMENT_DATA: any[] = [
   styleUrls: ['./entity1-list.component.scss']
 })
 export class Entity1ListComponent implements OnInit {
-  displayedColumns: string[] = ['column1', 'column2', 'column3', 'column4'];
   dataSource = ELEMENT_DATA;
-
-  dynamicComponents: TableDescriptor[] = [
-      {
-        cellComponent: SharedFeatureSimpleCellComponent,
-        columnComponent: SharedFeatureSimpleColumnComponent,
-        columnText: 'Column1',
-        columnDef: 'column1',
-        propertyPath: 'field1',
-      },
-    {
-      cellComponent: SharedFeatureSimpleCellComponent,
-      columnComponent: SharedFeatureSimpleColumnComponent,
-      columnText: 'Column2',
-      columnDef: 'column2',
-      propertyPath: 'field2',
-    },
-    {
-      cellComponent: SharedFeatureSimpleCellComponent,
-      columnComponent: SharedFeatureSimpleColumnComponent,
-      columnText: 'Column3',
-      columnDef: 'column3',
-      propertyPath: 'field3',
-    },
-    {
-      cellComponent: SharedFeatureSimpleCellComponent,
-      columnComponent: SharedFeatureSimpleColumnComponent,
-      columnText: 'Column4',
-      columnDef: 'column4',
-      propertyPath: 'field4',
-    },
-  ];
+  dynamicComponents: TableDescriptor[];
+  displayedColumns: string[];
   dynamicInjector: Injector;
 
   constructor(
       private injector: Injector,
-  ) {
+      @Optional() @Inject(ENTITY1_COLUMN_FEATURE_RESOLVER) private dynamicResolver: Entity1ColumnFeatureResolverService
 
+  ) {
+    this.dynamicComponents = this.dynamicResolver.getDynamicColumnFeatures(TABLE_DESCRIPTORS);
+    this.displayedColumns = this.dynamicResolver.getDisplayedColumns();
   }
 
   getInjector(descriptor: TableDescriptor, element: any) {

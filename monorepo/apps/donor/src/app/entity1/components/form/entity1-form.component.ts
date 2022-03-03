@@ -9,7 +9,7 @@ import {
 import { ActivatedRoute } from "@angular/router";
 import {FormBuilder, FormControl} from "@angular/forms";
 import {
-  DEPENDENCY_RESOLVER,
+  ENTITY1_FEATURE_RESOLVER,
   DYNAMIC_FORM,
   DYNAMIC_FORM_CALLBACK,
   DYNAMIC_FORM_MODEL,
@@ -18,7 +18,7 @@ import {
 } from "@monorepo/shared";
 import {SharedFeature1Component} from "@monorepo/shared";
 import {SharedFeature3Component} from "@monorepo/shared";
-import {FeaturesResolverService} from "../../../services/features-resolver.service";
+import {Entity1FeaturesResolverService} from "../../services/entity1-features-resolver.service";
 
 @Component({
   selector: 'monorepo-entity1-form',
@@ -31,7 +31,7 @@ export class Entity1FormComponent implements OnInit {
       private fb: FormBuilder,
       private injector: Injector,
       private changeDetectorRef: ChangeDetectorRef,
-      @Optional() @Inject(DEPENDENCY_RESOLVER) private dynamicResolver: FeaturesResolverService,
+      @Optional() @Inject(ENTITY1_FEATURE_RESOLVER) private dynamicResolver: Entity1FeaturesResolverService,
   ) {
     this.dynamicInjector = Injector.create({
       providers: [
@@ -55,7 +55,7 @@ export class Entity1FormComponent implements OnInit {
 
   ngOnInit() {
     this.dynamicComponents =
-        this.dynamicResolver.getDynamicComponents(this.dynamicComponents);
+        this.dynamicResolver.getDynamicFeatures(this.dynamicComponents);
   }
 
   ngAfterViewInit() {
