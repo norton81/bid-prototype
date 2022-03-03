@@ -1,6 +1,12 @@
 import {Component, EventEmitter, Inject, Input, OnInit, Optional, Output} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
-import {IFeature} from "@monorepo/shared";
+import {
+  DYNAMIC_FORM,
+  DYNAMIC_FORM_CALLBACK,
+  DYNAMIC_FORM_MODEL,
+  DYNAMIC_FORM_SYNC_BUS,
+  IFeature
+} from "@monorepo/shared";
 
 @Component({
   selector: 'monorepo-shared-feature2',
@@ -9,12 +15,11 @@ import {IFeature} from "@monorepo/shared";
 })
 export class SharedFeature2Component implements OnInit {
   constructor(
-      @Optional() @Inject('DYNAMIC_FORM') public form: FormGroup,
-      @Optional() @Inject('DYNAMIC_FORM_CALLBACK') private callback: Function,
-      @Optional() @Inject('DYNAMIC_FORM_MODEL') private model: Object,
-      @Optional() @Inject('DYNAMIC_FORM_SYNC_BUS') public bus: FormGroup,
+      @Optional() @Inject(DYNAMIC_FORM) public form: FormGroup,
+      @Optional() @Inject(DYNAMIC_FORM_CALLBACK) private callback: Function,
+      @Optional() @Inject(DYNAMIC_FORM_MODEL) private model: Object,
+      @Optional() @Inject(DYNAMIC_FORM_SYNC_BUS) public bus: FormGroup,
   ) {
-    debugger
   }
 
   ngOnInit() {

@@ -1,16 +1,21 @@
 import {
   ChangeDetectorRef,
   Component,
-  ComponentRef, Inject,
+  Inject,
   Injector,
   OnInit,
   Optional,
-  ViewChild,
-  ViewContainerRef
 } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import {FormBuilder, FormControl} from "@angular/forms";
-import {IFeature, SharedFeature2Component} from "@monorepo/shared";
+import {
+  DEPENDENCY_RESOLVER,
+  DYNAMIC_FORM,
+  DYNAMIC_FORM_CALLBACK,
+  DYNAMIC_FORM_MODEL,
+  DYNAMIC_FORM_SYNC_BUS,
+  SharedFeature2Component
+} from "@monorepo/shared";
 import {SharedFeature1Component} from "@monorepo/shared";
 import {SharedFeature3Component} from "@monorepo/shared";
 import {FeaturesResolverService} from "../../../services/features-resolver.service";
@@ -26,14 +31,14 @@ export class Entity1FormComponent implements OnInit {
       private fb: FormBuilder,
       private injector: Injector,
       private changeDetectorRef: ChangeDetectorRef,
-      @Optional() @Inject('DEPENDENCY_RESOLVER') private dynamicResolver: FeaturesResolverService,
+      @Optional() @Inject(DEPENDENCY_RESOLVER) private dynamicResolver: FeaturesResolverService,
   ) {
     this.dynamicInjector = Injector.create({
       providers: [
-        {provide: 'DYNAMIC_FORM', useValue: this.form},
-        {provide: 'DYNAMIC_FORM_CALLBACK', useValue: this.form},
-        {provide: 'DYNAMIC_FORM_SYNC_BUS', useValue: this.bus},
-        {provide: 'DYNAMIC_FORM_MODEL', useValue: this.model},
+        {provide: DYNAMIC_FORM, useValue: this.form},
+        {provide: DYNAMIC_FORM_CALLBACK, useValue: this.form},
+        {provide: DYNAMIC_FORM_SYNC_BUS, useValue: this.bus},
+        {provide: DYNAMIC_FORM_MODEL, useValue: this.model},
       ],
       parent: this.injector,
     });

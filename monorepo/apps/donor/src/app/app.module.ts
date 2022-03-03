@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SharedModule } from "@monorepo/shared";
+import {DEPENDENCY_RESOLVER, SharedModule} from "@monorepo/shared";
 import { AppRoutingModule } from "./app.routing.module";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
@@ -27,7 +27,7 @@ import {FeaturesResolverService} from "./services/features-resolver.service";
     MatCheckboxModule,
   ],
   providers: [
-    {provide: 'DEPENDENCY_RESOLVER', useClass: FeaturesResolverService},
+    {provide: DEPENDENCY_RESOLVER, useClass: FeaturesResolverService},
   ],
   bootstrap: [AppComponent],
 })
