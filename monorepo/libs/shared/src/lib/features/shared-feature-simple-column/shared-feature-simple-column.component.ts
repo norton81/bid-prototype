@@ -9,8 +9,8 @@ import {DYNAMIC_TABLE_DESCRIPTOR, DYNAMIC_TABLE_ELEMENT} from "../../constant";
 })
 export class SharedFeatureSimpleColumnComponent implements OnInit {
   constructor(
-      @Optional() @Inject(DYNAMIC_TABLE_ELEMENT) public element: any,
-      @Optional() @Inject(DYNAMIC_TABLE_DESCRIPTOR) public descriptor: TableDescriptor,
+      @Inject(DYNAMIC_TABLE_ELEMENT) public element: any,
+      @Inject(DYNAMIC_TABLE_DESCRIPTOR) public descriptor: TableDescriptor,
   ) { }
 
   ngOnInit(): void {

@@ -18,6 +18,10 @@ const routes: Routes = [
         path: ':mode',
         component: Entity1FormComponent,
       },
+      {
+        path: ':mode/:id',
+        component: Entity1FormComponent,
+      },
     ]
   },
 ];

@@ -9,7 +9,8 @@ export class GlobalConfigService {
     return {
       menu: {
         nodes: MENU_DATA
-      }
+      },
+      entityName: 'entities1'
     };
   }
 }

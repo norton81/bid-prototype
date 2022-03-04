@@ -9,6 +9,6 @@ export class Entity1ColumnFeatureResolverService {
     return features;
   };
   getDisplayedColumns(): string[] {
-    return ['column1', 'column2', 'column3', 'column4'];
+    return ['column1', 'column2', 'column3', 'column4', 'column5'];
   };
 }

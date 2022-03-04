@@ -21,6 +21,6 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
     MatButtonModule,
     MatCheckboxModule,
   ],
-  exports: [SharedFeature2Component]
+  exports: []
 })
 export class SharedFeature2Module { }

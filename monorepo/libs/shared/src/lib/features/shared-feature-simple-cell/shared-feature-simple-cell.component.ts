@@ -11,8 +11,8 @@ import {TableDescriptor} from "../table-desriptor";
 export class SharedFeatureSimpleCellComponent implements OnInit {
 
   constructor(
-      @Optional() @Inject(DYNAMIC_TABLE_ELEMENT) public element: any,
-      @Optional() @Inject(DYNAMIC_TABLE_DESCRIPTOR) public descriptor: TableDescriptor,
+      @Inject(DYNAMIC_TABLE_ELEMENT) public element: any,
+      @Inject(DYNAMIC_TABLE_DESCRIPTOR) public descriptor: TableDescriptor,
   ) { }
 
   ngOnInit(): void {

@@ -12,6 +12,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {Entity1FeaturesResolverService} from "./entity1/services/entity1-features-resolver.service";
 import {Entity1ColumnFeatureResolverService} from "./entity1/services/entity1-column-feature-resolver.service";
+import {MatIconModule} from "@angular/material/icon";
 
 
 @NgModule({

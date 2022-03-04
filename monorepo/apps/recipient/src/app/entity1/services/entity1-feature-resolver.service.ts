@@ -4,8 +4,8 @@ import {RecipientFeature1Component} from "../features/recipient-feature1/recipie
 
 @Injectable()
 export class Entity1FeatureResolverService {
-  async getDynamicComponents(components: any[]) {
+  getDynamicFeatures(components: any[]) {
     const result = [RecipientFeature1Component, components[1], components[2], RecipientFeature2Component]
-    return Promise.resolve(result);
+    return result;
   };
 }

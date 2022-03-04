@@ -9,17 +9,13 @@ import { SharedModule } from "@monorepo/shared";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatButtonModule} from "@angular/material/button";
 import {MatTableModule} from "@angular/material/table";
-import { SharedFeatureSimpleCellComponent } from '@monorepo/shared';
-import { SharedFeatureSimpleColumnComponent } from '@monorepo/shared';
-
+import {MatIconModule} from "@angular/material/icon";
 
 @NgModule({
   declarations: [
     Entity1Component,
     Entity1FormComponent,
     Entity1ListComponent,
-    SharedFeatureSimpleCellComponent,
-    SharedFeatureSimpleColumnComponent
   ],
   imports: [
     CommonModule,
@@ -29,6 +25,7 @@ import { SharedFeatureSimpleColumnComponent } from '@monorepo/shared';
     ReactiveFormsModule,
     MatButtonModule,
     MatTableModule,
+    MatIconModule,
   ]
 })
 export class Entity1Module { }

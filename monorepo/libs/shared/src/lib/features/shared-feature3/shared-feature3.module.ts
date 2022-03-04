@@ -11,6 +11,6 @@ import {SharedFeature3Component} from "./shared-feature3.component";
     CommonModule,
     MatCheckboxModule,
   ],
-  exports: [SharedFeature3Component]
+  exports: []
 })
 export class SharedFeature3Module { }

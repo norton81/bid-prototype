@@ -1,13 +1,14 @@
-import {Component, Inject, Injector, OnInit, Optional, Type} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Inject, Injector, OnInit, Optional, Type} from '@angular/core';
 import {
   ENTITY1_COLUMN_FEATURE_RESOLVER,
-  ENTITY1_FEATURE_RESOLVER,
+  SharedFeatureLinkColumnComponent,
   SharedFeatureSimpleCellComponent,
   TableDescriptor
 } from "@monorepo/shared";
 import {SharedFeatureSimpleColumnComponent} from "@monorepo/shared";
-import {DYNAMIC_TABLE_DESCRIPTOR, DYNAMIC_TABLE_ELEMENT} from "@monorepo/shared";
 import {Entity1ColumnFeatureResolverService} from "../../services/entity1-column-feature-resolver.service";
+import {GlobalConfigService} from "../../../services/global-config.service";
+import {SharedFeatureDeleteColumnComponent} from "@monorepo/shared";
 
 
 const TABLE_DESCRIPTORS = [
@@ -19,7 +20,7 @@ const TABLE_DESCRIPTORS = [
     propertyPath: 'field1',
   },
   {
-    cellComponent: SharedFeatureSimpleCellComponent,
+    cellComponent: SharedFeatureLinkColumnComponent,
     columnComponent: SharedFeatureSimpleColumnComponent,
     columnText: 'Column2',
     columnDef: 'column2',
@@ -38,6 +39,13 @@ const TABLE_DESCRIPTORS = [
     columnText: 'Column4',
     columnDef: 'column4',
     propertyPath: 'field4',
+  },
+  {
+    cellComponent: SharedFeatureDeleteColumnComponent,
+    columnComponent: SharedFeatureSimpleColumnComponent,
+    columnText: 'Column5',
+    columnDef: 'column5',
+    propertyPath: 'field5',
   },
 ];
 
@@ -64,26 +72,15 @@ export class Entity1ListComponent implements OnInit {
   dataSource = ELEMENT_DATA;
   dynamicComponents: TableDescriptor[];
   displayedColumns: string[];
-  dynamicInjector: Injector;
+  currentInjector: Injector;
 
   constructor(
       private injector: Injector,
-      @Optional() @Inject(ENTITY1_COLUMN_FEATURE_RESOLVER) private dynamicResolver: Entity1ColumnFeatureResolverService
-
+      @Optional() @Inject(ENTITY1_COLUMN_FEATURE_RESOLVER) private dynamicResolver: Entity1ColumnFeatureResolverService,
+      public configService: GlobalConfigService,
   ) {
     this.dynamicComponents = this.dynamicResolver.getDynamicColumnFeatures(TABLE_DESCRIPTORS);
     this.displayedColumns = this.dynamicResolver.getDisplayedColumns();
-  }
-
-  getInjector(descriptor: TableDescriptor, element: any) {
-    return Injector.create({
-      providers: [
-        {provide: DYNAMIC_TABLE_ELEMENT, useValue: element},
-        {provide: DYNAMIC_TABLE_DESCRIPTOR, useValue: descriptor},
-      ],
-      parent: this.injector,
-    });
-
   }
 
   ngOnInit(): void {
