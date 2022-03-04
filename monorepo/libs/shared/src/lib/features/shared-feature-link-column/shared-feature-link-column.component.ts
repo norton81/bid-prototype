@@ -22,7 +22,6 @@ export class SharedFeatureLinkColumnComponent implements OnInit {
   click(
       element: any
   ) {
-    debugger
     this.router.navigate(['edit', element.field1], {relativeTo: this.activatedRoute})
   }
 

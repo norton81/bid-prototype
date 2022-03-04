@@ -1,5 +1,10 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {DYNAMIC_TABLE_DESCRIPTOR, DYNAMIC_TABLE_ELEMENT, TableDescriptor} from "@monorepo/shared";
+import {
+  DYNAMIC_TABLE_CALLBACK_FN,
+  DYNAMIC_TABLE_DESCRIPTOR,
+  DYNAMIC_TABLE_ELEMENT,
+  TableDescriptor
+} from "@monorepo/shared";
 
 @Component({
   selector: 'monorepo-shared-feature-delete-column',
@@ -11,13 +16,15 @@ export class SharedFeatureDeleteColumnComponent implements OnInit {
   constructor(
       @Inject(DYNAMIC_TABLE_ELEMENT) public element: any,
       @Inject(DYNAMIC_TABLE_DESCRIPTOR) public descriptor: TableDescriptor,
+      @Inject(DYNAMIC_TABLE_CALLBACK_FN) public callbackFn: Function,
   ) { }
 
   ngOnInit(): void {
+
   }
 
-  click1() {
-    console.log('delete');
+  delete() {
+    this.callbackFn(this.element.field1);
   }
 
 }

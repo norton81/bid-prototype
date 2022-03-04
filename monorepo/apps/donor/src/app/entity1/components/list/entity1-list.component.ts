@@ -1,6 +1,6 @@
-import {ChangeDetectionStrategy, Component, Inject, Injector, OnInit, Optional, Type} from '@angular/core';
+import {EventEmitter, Component, Inject, Injector, OnInit, Optional, Output, Type} from '@angular/core';
 import {
-  ENTITY1_COLUMN_FEATURE_RESOLVER,
+  ENTITY1_COLUMN_FEATURE_RESOLVER, HOST_NAME,
   SharedFeatureLinkColumnComponent,
   SharedFeatureSimpleCellComponent,
   TableDescriptor
@@ -9,6 +9,7 @@ import {SharedFeatureSimpleColumnComponent} from "@monorepo/shared";
 import {Entity1ColumnFeatureResolverService} from "../../services/entity1-column-feature-resolver.service";
 import {GlobalConfigService} from "../../../services/global-config.service";
 import {SharedFeatureDeleteColumnComponent} from "@monorepo/shared";
+import {Entity1Service} from "../../services/entity1.service";
 
 
 const TABLE_DESCRIPTORS = [
@@ -49,41 +50,38 @@ const TABLE_DESCRIPTORS = [
   },
 ];
 
-
-const ELEMENT_DATA: any[] = [
-  {field1: 1, field2: 'Hydrogen', field3: 1.0079, field4: 'H'},
-  {field1: 2, field2: 'Helium', field3: 4.0026, field4: 'He'},
-  {field1: 3, field2: 'Lithium', field3: 6.941, field4: 'Li'},
-  {field1: 4, field2: 'Beryllium', field3: 9.0122, field4: 'Be'},
-  {field1: 5, field2: 'Boron', field3: 10.811, field4: 'B'},
-  {field1: 6, field2: 'Carbon', field3: 12.0107, field4: 'C'},
-  {field1: 7, field2: 'Nitrogen', field3: 14.0067, field4: 'N'},
-  {field1: 8, field2: 'Oxygen', field3: 15.9994, field4: 'O'},
-  {field1: 9, field2: 'Fluorine', field3: 18.9984, field4: 'F'},
-  {field1: 10, field2: 'Neon', field3: 20.1797, field4: 'Ne'},
-];
-
 @Component({
   selector: 'monorepo-entity1-list',
   templateUrl: './entity1-list.component.html',
   styleUrls: ['./entity1-list.component.scss']
 })
 export class Entity1ListComponent implements OnInit {
-  dataSource = ELEMENT_DATA;
+  dataSource: any;
   dynamicComponents: TableDescriptor[];
   displayedColumns: string[];
   currentInjector: Injector;
+  featureCallbackFn: Function;
 
   constructor(
       private injector: Injector,
-      @Optional() @Inject(ENTITY1_COLUMN_FEATURE_RESOLVER) private dynamicResolver: Entity1ColumnFeatureResolverService,
+      @Inject(ENTITY1_COLUMN_FEATURE_RESOLVER)
+      private dynamicResolver: Entity1ColumnFeatureResolverService,
       public configService: GlobalConfigService,
+      private entity1: Entity1Service
   ) {
-    this.dynamicComponents = this.dynamicResolver.getDynamicColumnFeatures(TABLE_DESCRIPTORS);
-    this.displayedColumns = this.dynamicResolver.getDisplayedColumns();
+    this.dynamicComponents = this.dynamicResolver
+        .getDynamicColumnFeatures(TABLE_DESCRIPTORS);
+    this.displayedColumns = this.dynamicResolver
+        .getDisplayedColumns();
+
+    this.featureCallbackFn = async (id: number) => {
+      this.dataSource = await this.entity1.delete(id);
+    }
   }
 
-  ngOnInit(): void {
+  async ngOnInit() {
+    this.dataSource = await this.entity1.getList();
   }
+
 
 }
