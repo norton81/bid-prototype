@@ -9,16 +9,86 @@ app.use(bodyParser());
 app.use(cors());
 
 var DATA = [
-    {field1: 1, field2: 'Hydrogen', field3: 1.0079, field4: 'H'},
-    {field1: 2, field2: 'Helium', field3: 4.0026, field4: 'He'},
-    {field1: 3, field2: 'Lithium', field3: 6.941, field4: 'Li'},
-    {field1: 4, field2: 'Beryllium', field3: 9.0122, field4: 'Be'},
-    {field1: 5, field2: 'Boron', field3: 10.811, field4: 'B'},
-    {field1: 6, field2: 'Carbon', field3: 12.0107, field4: 'C'},
-    {field1: 7, field2: 'Nitrogen', field3: 14.0067, field4: 'N'},
-    {field1: 8, field2: 'Oxygen', field3: 15.9994, field4: 'O'},
-    {field1: 9, field2: 'Fluorine', field3: 18.9984, field4: 'F'},
-    {field1: 10, field2: 'Neon', field3: 20.1797, field4: 'Ne'},
+    {
+        field1: 1, field2: 'James', field3: 'Smith', field4: 12,
+        field5: {
+            field6: '94115',
+            field7: 'New York',
+            field8: true,
+        },
+    },
+    {
+        field1: 2, field2: 'Michael', field3: 'Smith', field4: 22,
+        field5: {
+            field6: '54715',
+            field7: 'Los Angeles',
+            field8: false,
+        },
+    },
+    {
+        field1: 3, field2: 'Robert', field3: 'Smith', field4: 17,
+        field5: {
+            field6: '94117',
+            field7: 'San Antonio',
+            field8: true,
+        },
+    },
+    {
+        field1: 4, field2: 'Maria', field3: 'Garcia', field4: 33,
+        field5: {
+            field6: '44175',
+            field7: '',
+            field8: true,
+        },
+    },
+    {
+        field1: 5, field2: 'David', field3: 'Smith', field4: 41,
+        field5: {
+            field6: '95115',
+            field7: 'Phoenix',
+            field8: true,
+        },
+    },
+    {
+        field1: 6, field2: 'Maria', field3: 'Rodriguez', field4: 45,
+        field5: {
+            field6: '94715',
+            field7: '',
+            field8: true,
+        },
+    },
+    {
+        field1: 7, field2: 'Mary', field3: 'Smith', field4: 17,
+        field5: {
+            field6: '94167',
+            field7: 'San Diego',
+            field8: true,
+        },
+    },
+    {
+        field1: 8, field2: 'Maria', field3: 'Hernandez', field4: 55,
+        field5: {
+            field6: '94715',
+            field7: 'Columbus',
+            field8: true,
+        },
+    },
+    {
+        field1: 9, field2: 'James', field3: 'Johnson', field4: 33,
+        field5: {
+            field6: '77715',
+            field7: 'Indianapolis',
+            field8: true,
+        },
+    },
+    {
+        field1: 10, field2: 'Neon', field3: 'Martinez', field4: 19,
+        field5: {
+            field6: '94115',
+            field7: 'Charlotte',
+            field8: true,
+        },
+    },
 ];
 
 app.get('/entity1', (req, res) => {

@@ -19,6 +19,8 @@ import {
 import {SharedFeature1Component} from "@monorepo/shared";
 import {SharedFeature3Component} from "@monorepo/shared";
 import {Entity1FeaturesResolverService} from "../../services/entity1-features-resolver.service";
+import {GlobalConfigService} from "../../../services/global-config.service";
+import {Entity1Service} from "../../services/entity1.service";
 
 @Component({
   selector: 'monorepo-entity1-form',
@@ -31,7 +33,9 @@ export class Entity1FormComponent implements OnInit {
       private fb: FormBuilder,
       private injector: Injector,
       private changeDetectorRef: ChangeDetectorRef,
-      @Optional() @Inject(ENTITY1_FEATURE_RESOLVER) private dynamicResolver: Entity1FeaturesResolverService,
+      @Inject(ENTITY1_FEATURE_RESOLVER)
+      private dynamicResolver: Entity1FeaturesResolverService,
+      private entity1: Entity1Service
   ) {
     this.dynamicInjector = Injector.create({
       providers: [
@@ -50,12 +54,15 @@ export class Entity1FormComponent implements OnInit {
   public form = this.fb.group({});
   public bus = this.fb.group({
     submitDisabled: new FormControl(false),
+    model: new FormControl(null),
   });
   public model: any = {};
 
-  ngOnInit() {
+  async ngOnInit() {
+    const model = await this.entity1.get(parseInt(this.route.snapshot.params['id'], 10));
     this.dynamicComponents =
         this.dynamicResolver.getDynamicFeatures(this.dynamicComponents);
+    this.bus.get('model')?.patchValue(model);
   }
 
   ngAfterViewInit() {
