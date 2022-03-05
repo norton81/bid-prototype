@@ -66,7 +66,10 @@ export class Entity1FormComponent implements OnInit {
     const model = await this.entity1.get(parseInt(this.route.snapshot.params['id'], 10));
     this.dynamicComponents =
         this.dynamicResolver.getDynamicFeatures(this.dynamicComponents);
-    this.bus.get('model')?.patchValue(model);
+
+    setTimeout(() => {
+      this.bus.get('model')?.patchValue(model);
+    })
   }
 
   ngAfterViewInit() {
@@ -74,19 +77,21 @@ export class Entity1FormComponent implements OnInit {
   }
 
   public async submit() {
+    debugger
     if(this.form.invalid) {
       console.log('FORM IS INVALID');
       this.form.markAllAsTouched();
       return;
     }
-    debugger
+    let routRedirect = '../';
     if(this.mode === 'edit') {
+      routRedirect += '../';
       await this.entity1.edit(
           this.form.value, parseInt(this.route.snapshot.params['id'], 10));
     }
     else {
       await this.entity1.create(this.form.value);
     }
-    this.router.navigate(['../../'], { relativeTo: this.route });
+    this.router.navigate([routRedirect], { relativeTo: this.route });
   }
 }

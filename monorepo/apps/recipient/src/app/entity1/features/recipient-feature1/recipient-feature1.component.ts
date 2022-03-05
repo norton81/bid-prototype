@@ -1,5 +1,6 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {FormControl, FormGroup} from "@angular/forms";
+import {Component, EventEmitter, Inject, Input, OnInit, Optional, Output} from '@angular/core';
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {DYNAMIC_FORM, DYNAMIC_FORM_CALLBACK, DYNAMIC_FORM_SYNC_BUS} from "@monorepo/shared";
 
 @Component({
   selector: 'monorepo-recipient-feature1',
@@ -7,13 +8,28 @@ import {FormControl, FormGroup} from "@angular/forms";
   styleUrls: ['./recipient-feature1.component.scss']
 })
 export class RecipientFeature1Component implements OnInit {
-  @Input() form: FormGroup = new FormGroup({});
-  @Input() bus: FormGroup;
-  @Input() model: any;
-  @Output() changed = new EventEmitter<any>();
+  constructor(
+      @Optional() @Inject(DYNAMIC_FORM) public form: FormGroup,
+      @Optional() @Inject(DYNAMIC_FORM_CALLBACK) private callback: Function,
+      @Optional() @Inject(DYNAMIC_FORM_SYNC_BUS) public bus: FormGroup,
+  ) {
+  }
 
   ngOnInit() {
-    this.form?.addControl('field1', new FormControl(''));
-    this.form?.addControl('field2', new FormControl(''));
+    debugger
+    this.form?.removeControl('field5')
+    this.form?.addControl('field5', new FormGroup({
+      field7: new FormControl('', Validators.required),
+      field8: new FormControl(true),
+    }));
+    this.bus.get('model')?.valueChanges.subscribe( (model)=> {
+      debugger
+      if(!model) {
+        return;
+      }
+      this.form?.get('field5')?.patchValue(
+          model.field5
+      )
+    });
   }
 }
