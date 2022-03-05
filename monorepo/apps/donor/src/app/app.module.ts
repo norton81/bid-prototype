@@ -22,11 +22,6 @@ import {HttpClientModule} from "@angular/common/http";
     BrowserAnimationsModule,
     SharedModule,
     AppRoutingModule,
-    ReactiveFormsModule,
-    MatInputModule,
-    MatFormFieldModule,
-    MatButtonModule,
-    MatCheckboxModule,
     HttpClientModule,
   ],
   providers: [
