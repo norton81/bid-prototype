@@ -1,24 +1,27 @@
 <div class="feature">
-<h2>Shard Feature1</h2>
-<div [formGroup]="form">
-    <div>
-        <mat-form-field class="field" appearance="outline">
-            <mat-label>Field 2</mat-label>
-            <input formControlName="field2" color="primary" matInput placeholder="Field 2">
-        </mat-form-field>
+    <h2>Shard Feature1</h2>
+    <div [formGroup]="form">
+        <div>
+            <mat-form-field class="field" appearance="outline">
+                <mat-label>Field 2</mat-label>
+                <input formControlName="field2" color="primary" matInput placeholder="Field 2">
+                <mat-error *ngIf="form?.get('field2')?.invalid">required</mat-error>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field class="field" appearance="outline">
+                <mat-label>Field 3</mat-label>
+                <input formControlName="field3" color="primary" matInput placeholder="Field 3">
+                <mat-error *ngIf="form?.get('field3')?.invalid">required</mat-error>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field class="field" appearance="outline">
+                <mat-label>Field 4</mat-label>
+                <input formControlName="field4" color="primary" matInput placeholder="Field 4">
+                <mat-error *ngIf="form?.get('field4')?.invalid">required</mat-error>
+            </mat-form-field>
+        </div>
     </div>
-    <div>
-        <mat-form-field class="field" appearance="outline">
-            <mat-label>Field 3</mat-label>
-            <input formControlName="field3" color="primary" matInput placeholder="Field 3">
-        </mat-form-field>
-    </div>
-    <div>
-        <mat-form-field class="field" appearance="outline">
-            <mat-label>Field 4</mat-label>
-            <input formControlName="field4" color="primary" matInput placeholder="Field 4">
-        </mat-form-field>
-    </div>
-</div>
 </div>
 

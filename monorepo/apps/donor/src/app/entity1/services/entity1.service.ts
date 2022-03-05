@@ -21,4 +21,12 @@ export class Entity1Service {
   async delete (id: number) {
     return await lastValueFrom(this.http.delete(`${this.host}/entity1/${id}`));
   }
+
+  async create (model: any) {
+    return await lastValueFrom(this.http.post(`${this.host}/entity1`, model));
+  }
+
+  async edit (model: any, id: number) {
+    return await lastValueFrom(this.http.put(`${this.host}/entity1/${id}`, model));
+  }
 }

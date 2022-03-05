@@ -4,7 +4,6 @@ import {
   Inject,
   Injector,
   OnInit,
-  Optional,
 } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import {FormBuilder, FormControl} from "@angular/forms";
@@ -19,7 +18,6 @@ import {
 import {SharedFeature1Component} from "@monorepo/shared";
 import {SharedFeature3Component} from "@monorepo/shared";
 import {Entity1FeaturesResolverService} from "../../services/entity1-features-resolver.service";
-import {GlobalConfigService} from "../../../services/global-config.service";
 import {Entity1Service} from "../../services/entity1.service";
 
 @Component({
@@ -28,6 +26,7 @@ import {Entity1Service} from "../../services/entity1.service";
   styleUrls: ['./entity1-form.component.scss']
 })
 export class Entity1FormComponent implements OnInit {
+  mode: string = '';
   constructor(
       public route: ActivatedRoute,
       private fb: FormBuilder,
@@ -48,7 +47,10 @@ export class Entity1FormComponent implements OnInit {
     });
   }
 
-  dynamicComponents = [SharedFeature1Component, SharedFeature2Component, SharedFeature3Component];
+  dynamicComponents = [
+    SharedFeature1Component,
+    SharedFeature2Component,
+    SharedFeature3Component];
   dynamicInjector: Injector;
 
   public form = this.fb.group({});
@@ -59,6 +61,7 @@ export class Entity1FormComponent implements OnInit {
   public model: any = {};
 
   async ngOnInit() {
+    this.mode = this.route.snapshot.params['mode'];
     const model = await this.entity1.get(parseInt(this.route.snapshot.params['id'], 10));
     this.dynamicComponents =
         this.dynamicResolver.getDynamicFeatures(this.dynamicComponents);
@@ -69,7 +72,19 @@ export class Entity1FormComponent implements OnInit {
     this.changeDetectorRef.detectChanges();
   }
 
-  public submit() {
-    console.log('FORM IS INVALID');
+  public async submit() {
+    if(this.form.invalid) {
+      console.log('FORM IS INVALID');
+      this.form.markAllAsTouched();
+      return;
+    }
+    debugger
+    if(this.mode === 'edit') {
+      await this.entity1.edit(
+          this.form.value, parseInt(this.route.snapshot.params['id'], 10));
+    }
+    else {
+      await this.entity1.create(this.form.value);
+    }
   }
 }

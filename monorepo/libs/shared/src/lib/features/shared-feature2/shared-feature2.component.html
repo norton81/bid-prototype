@@ -4,14 +4,20 @@
         <div formGroupName="field5">
             <div>
                 <mat-form-field class="field" appearance="outline">
-                    <mat-label>Field1</mat-label>
-                    <input formControlName="field6" color="primary" matInput placeholder="FIO">
+                    <mat-label>Field6</mat-label>
+                    <input formControlName="field6" color="primary" matInput placeholder="Field6">
+<!--
+                    <mat-error *ngIf="form?.get('field5')?.get('field6')?.invalid">required</mat-error>
+-->
                 </mat-form-field>
             </div>
             <div>
                 <mat-form-field class="field" appearance="outline">
-                    <mat-label>Field2</mat-label>
-                    <input formControlName="field7" color="primary" matInput placeholder="FIO">
+                    <mat-label>Field7</mat-label>
+                    <input formControlName="field7" color="primary" matInput placeholder="Field7">
+<!--
+                    <mat-error *ngIf="form?.get('field5')?.get('field7')?.invalid">required</mat-error>
+-->
                 </mat-form-field>
             </div>
             <div>

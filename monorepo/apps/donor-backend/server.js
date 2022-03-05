@@ -8,7 +8,9 @@ var uuid = require('uuid');
 app.use(bodyParser());
 app.use(cors());
 
-var DATA = [
+let id = 10;
+
+var store = [
     {
         field1: 1, field2: 'James', field3: 'Smith', field4: 12,
         field5: {
@@ -92,30 +94,44 @@ var DATA = [
 ];
 
 app.get('/entity1', (req, res) => {
-    res.send(DATA);
+    res.send(store);
 });
 
 app.get('/entity1/:id', (req, res) => {
-    var result = DATA.find((item) => {
+    var result = store.find((item) => {
         return item.field1 === parseInt(req.params.id, 10);
-    })
+    });
     res.send(result);
 });
 
 app.delete('/entity1/:id', (req, res) => {
-    var index = DATA.findIndex((item) => {
+    var index = store.findIndex((item) => {
         console.log(item.field1 === parseInt(req.params.id, 10));
         return item.field1 === parseInt(req.params.id, 10);
-    })
+    });
 
     if(~index) {
-        DATA.splice(index, 1)
+        store.splice(index, 1)
     }
-    res.send(DATA);
+    res.send(store);
 });
 
-app.put('/entity1', (req, res) => {
+app.put('/entity1/:id', (req, res) => {
     const body = req.body;
+    var index = store.findIndex((item) => {
+        console.log(item.field1 === parseInt(req.params.id, 10));
+        return item.field1 === parseInt(req.params.id, 10);
+    });
+    if(~index) {
+        store.splice(index, 1, body);
+    }
+    res.send(body);
+});
+
+app.post('/entity1', (req, res) => {
+    const body = req.body;
+    body.field1 = ++id;
+    store.push(body);
     res.send(body);
 });
 

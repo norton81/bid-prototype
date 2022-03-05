@@ -1,6 +1,6 @@
 import {Component, Input, EventEmitter, Output, Optional, Inject} from '@angular/core';
 import {IFeature} from "../../IFeature";
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormControl, FormGroup, Validator, Validators} from "@angular/forms";
 import {DYNAMIC_FORM, DYNAMIC_FORM_CALLBACK, DYNAMIC_FORM_MODEL, DYNAMIC_FORM_SYNC_BUS} from "../../constant";
 
 @Component({
@@ -17,13 +17,18 @@ export class SharedFeature1Component {
   }
 
   ngOnInit() {
-    this.form?.addControl('field2', new FormControl(''));
-    this.form?.addControl('field3', new FormControl(''));
-    this.form?.addControl('field4', new FormControl(''));
+    this.form?.addControl('field1', new FormControl(''));
+    this.form?.addControl('field2', new FormControl('', Validators.required));
+    this.form?.addControl('field3', new FormControl('', Validators.required));
+    this.form?.addControl('field4', new FormControl('', Validators.required));
     this.bus.get('model')?.valueChanges.subscribe( (model)=> {
-      this.form?.get('field2')?.patchValue(model.field2);
-      this.form?.get('field3')?.patchValue(model.field3);
-      this.form?.get('field4')?.patchValue(model.field4);
+      if(!model) {
+        return;
+      }
+      this.form?.get('field1')?.patchValue(model.field1);
+      this.form?.get('field2')?.patchValue(model?.field2);
+      this.form?.get('field3')?.patchValue(model?.field3);
+      this.form?.get('field4')?.patchValue(model?.field4);
     });
   }
 }

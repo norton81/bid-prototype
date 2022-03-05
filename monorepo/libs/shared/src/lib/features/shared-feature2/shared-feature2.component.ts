@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit, Optional} from '@angular/core';
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {
   DYNAMIC_FORM,
   DYNAMIC_FORM_CALLBACK,
@@ -26,6 +26,9 @@ export class SharedFeature2Component implements OnInit {
       field8: new FormControl(true),
     }));
     this.bus.get('model')?.valueChanges.subscribe( (model)=> {
+      if(!model) {
+        return;
+      }
       this.form?.get('field5')?.patchValue(
           model.field5
       )

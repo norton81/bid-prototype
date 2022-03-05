@@ -1,5 +1,4 @@
-<h1>{{route.snapshot.params['mode']}}</h1>
-<h1>{{route.snapshot.params['id']}}</h1>
+<h1 class="title">{{mode}} Entity1</h1>
 <form [formGroup]="form" class="form">
     <ng-container *ngFor="let component of dynamicComponents">
         <ng-container
@@ -12,7 +11,7 @@
             color="primary"
             [disabled]="bus.get('submitDisabled')?.value"
             (click)='submit()'>apply action</button>
-    <div>
+<!--    <div>
         {{form.value | json}}/{{bus.get('submitDisabled')?.value | json}}
-    </div>
+    </div>-->
 </form>
