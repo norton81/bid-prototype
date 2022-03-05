@@ -10,6 +10,9 @@ import {RecipientFeature1Module} from "./entity1/features/recipient-feature1/rec
 import {Entity1ColumnFeatureResolverService} from "./entity1/services/entity1-column-feature-resolver.service";
 import {HttpClientModule} from "@angular/common/http";
 import {RecipientFeature2Module} from "./entity1/features/recipient-feature2/recipient-feature2.module";
+import {StoreModule} from "@ngrx/store";
+import {appReducer} from "../../../donor/src/app/store/app.reducer";
+import {EffectsModule} from "@ngrx/effects";
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,6 +24,8 @@ import {RecipientFeature2Module} from "./entity1/features/recipient-feature2/rec
     RecipientFeature1Module,
     RecipientFeature2Module,
     HttpClientModule,
+    StoreModule.forRoot(appReducer),
+    EffectsModule.forRoot([]),
   ],
   providers: [
     {provide: ENTITY1_FEATURE_RESOLVER, useClass: Entity1FeatureResolverService},
