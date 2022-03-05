@@ -58,6 +58,7 @@ export class Entity1FormComponent implements OnInit {
   public bus = this.fb.group({
     submitDisabled: new FormControl(false),
     model: new FormControl(null),
+    timer: new FormControl('The Feature is locked in App'),
   });
   public model: any = {};
 

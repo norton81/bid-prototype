@@ -9,6 +9,7 @@ import {Entity1FeatureResolverService} from "./entity1/services/entity1-feature-
 import {RecipientFeature1Module} from "./entity1/features/recipient-feature1/recipient-feature1.module";
 import {Entity1ColumnFeatureResolverService} from "./entity1/services/entity1-column-feature-resolver.service";
 import {HttpClientModule} from "@angular/common/http";
+import {RecipientFeature2Module} from "./entity1/features/recipient-feature2/recipient-feature2.module";
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,6 +19,7 @@ import {HttpClientModule} from "@angular/common/http";
     AppRoutingModule,
     SharedModule,
     RecipientFeature1Module,
+    RecipientFeature2Module,
     HttpClientModule,
   ],
   providers: [

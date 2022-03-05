@@ -9,9 +9,9 @@ import {DYNAMIC_FORM, DYNAMIC_FORM_CALLBACK, DYNAMIC_FORM_SYNC_BUS} from "@monor
 })
 export class RecipientFeature1Component implements OnInit {
   constructor(
-      @Optional() @Inject(DYNAMIC_FORM) public form: FormGroup,
-      @Optional() @Inject(DYNAMIC_FORM_CALLBACK) private callback: Function,
-      @Optional() @Inject(DYNAMIC_FORM_SYNC_BUS) public bus: FormGroup,
+      @Inject(DYNAMIC_FORM) public form: FormGroup,
+      @Inject(DYNAMIC_FORM_CALLBACK) private callback: Function,
+      @Inject(DYNAMIC_FORM_SYNC_BUS) public bus: FormGroup,
   ) {
   }
 
