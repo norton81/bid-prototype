@@ -5,7 +5,7 @@ import {
   Injector,
   OnInit,
 } from '@angular/core';
-import { ActivatedRoute } from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {FormBuilder, FormControl} from "@angular/forms";
 import {
   ENTITY1_FEATURE_RESOLVER,
@@ -29,6 +29,7 @@ export class Entity1FormComponent implements OnInit {
   mode: string = '';
   constructor(
       public route: ActivatedRoute,
+      private router: Router,
       private fb: FormBuilder,
       private injector: Injector,
       private changeDetectorRef: ChangeDetectorRef,
@@ -86,5 +87,6 @@ export class Entity1FormComponent implements OnInit {
     else {
       await this.entity1.create(this.form.value);
     }
+    this.router.navigate(['../../'], { relativeTo: this.route });
   }
 }
