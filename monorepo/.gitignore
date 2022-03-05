@@ -41,4 +41,6 @@ Thumbs.db
 .angular
 
 apps/donor-backend/node_modules
-apps/donor-backend/recipient-backend
+apps/donor-backend/.vscode
+apps/recipient-backend/node_modules
+apps/recipient-backend/.vscode
