@@ -22,6 +22,7 @@ export class SharedFeature1Component {
     this.form?.addControl('field3', new FormControl('', Validators.required));
     this.form?.addControl('field4', new FormControl('', Validators.required));
     this.bus.get('model')?.valueChanges.subscribe( (model)=> {
+      debugger
       if(!model) {
         return;
       }

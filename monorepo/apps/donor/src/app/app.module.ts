@@ -13,6 +13,9 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
 import {Entity1FeaturesResolverService} from "./entity1/services/entity1-features-resolver.service";
 import {Entity1ColumnFeatureResolverService} from "./entity1/services/entity1-column-feature-resolver.service";
 import {HttpClientModule} from "@angular/common/http";
+import {StoreModule} from "@ngrx/store";
+import {EffectsModule} from "@ngrx/effects";
+import {appReducer} from "./store/app.reducer";
 
 
 @NgModule({
@@ -23,6 +26,8 @@ import {HttpClientModule} from "@angular/common/http";
     SharedModule,
     AppRoutingModule,
     HttpClientModule,
+    StoreModule.forRoot(appReducer),
+    EffectsModule.forRoot([]),
   ],
   providers: [
     {provide: ENTITY1_FEATURE_RESOLVER, useClass: Entity1FeaturesResolverService},

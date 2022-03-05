@@ -10,6 +10,10 @@ import {Entity1ColumnFeatureResolverService} from "../../services/entity1-column
 import {GlobalConfigService} from "../../../services/global-config.service";
 import {SharedFeatureDeleteColumnComponent} from "@monorepo/shared";
 import {Entity1Service} from "../../services/entity1.service";
+import {Store} from "@ngrx/store";
+import {selectEntities} from "../../store/entity1.selector";
+import {filter} from "rxjs";
+import {DeleteEntity1Action, LoadEntities1Action} from "../../store/entity1.action";
 
 
 const TABLE_DESCRIPTORS = [
@@ -67,21 +71,25 @@ export class Entity1ListComponent implements OnInit {
       @Inject(ENTITY1_COLUMN_FEATURE_RESOLVER)
       private dynamicResolver: Entity1ColumnFeatureResolverService,
       public configService: GlobalConfigService,
-      private entity1: Entity1Service
+      private entity1: Entity1Service,
+      private store: Store,
   ) {
     this.dynamicComponents = this.dynamicResolver
         .getDynamicColumnFeatures(TABLE_DESCRIPTORS);
     this.displayedColumns = this.dynamicResolver
         .getDisplayedColumns();
 
-    this.featureCallbackFn = async (id: number) => {
-      this.dataSource = await this.entity1.delete(id);
+    this.featureCallbackFn = (id: number) => {
+      this.store.dispatch(new DeleteEntity1Action(id));
     }
   }
 
-  async ngOnInit() {
-    this.dataSource = await this.entity1.getList();
+  ngOnInit() {
+    this.store.dispatch(new LoadEntities1Action())
+    this.store.select(selectEntities).pipe(filter(Boolean))
+        .subscribe((model)=>{
+          debugger
+      this.dataSource = model;
+    });
   }
-
-
 }

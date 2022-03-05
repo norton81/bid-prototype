@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Inject, Input, OnInit, Optional, Output} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {DYNAMIC_FORM, DYNAMIC_FORM_CALLBACK, DYNAMIC_FORM_SYNC_BUS} from "@monorepo/shared";
 
@@ -16,14 +16,12 @@ export class RecipientFeature1Component implements OnInit {
   }
 
   ngOnInit() {
-    debugger
     this.form?.removeControl('field5')
     this.form?.addControl('field5', new FormGroup({
       field7: new FormControl('', Validators.required),
       field8: new FormControl(true),
     }));
     this.bus.get('model')?.valueChanges.subscribe( (model)=> {
-      debugger
       if(!model) {
         return;
       }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Store} from "@ngrx/store";
 
 @Component({
   selector: 'monorepo-entity1',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Entity1Component implements OnInit {
 
-  constructor() { }
+  constructor(
+      private store: Store,
+  ) { }
 
   ngOnInit(): void {
+    this.store.subscribe((model)=> {
+      console.log(model);
+    })
   }
-
 }

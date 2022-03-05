@@ -27,7 +27,6 @@ export class RecipientFeature2Component implements OnInit {
       const date = (new Date());
       const clock = `${getDigit(date.getHours())}:${getDigit(date.getMinutes())}:${getDigit(date.getSeconds())}`;
       this.bus.get('timer')?.patchValue(clock);
-      debugger
     }, 1000);
   }
 

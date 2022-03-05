@@ -51,6 +51,8 @@ module.exports = {
           "@angular/router": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
           "@angular/material": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
           "@angular/forms": { requiredVersion: 'auto', singleton: true },
+          "@ngrx/store": { requiredVersion: 'auto', singleton: true },
+          "@ngrx/effects": { requiredVersion: 'auto', singleton: true },
           ...sharedMappings.getDescriptors()
         })
         

@@ -18,7 +18,10 @@ import {
 import {SharedFeature1Component} from "@monorepo/shared";
 import {SharedFeature3Component} from "@monorepo/shared";
 import {Entity1FeaturesResolverService} from "../../services/entity1-features-resolver.service";
-import {Entity1Service} from "../../services/entity1.service";
+import {Store} from "@ngrx/store";
+import {CreateEntity1Action, EditEntity1Action, LoadEntity1Action, ResetEntity1Action} from "../../store/entity1.action";
+import {selectEntity} from "../../store/entity1.selector";
+import {filter} from "rxjs";
 
 @Component({
   selector: 'monorepo-entity1-form',
@@ -35,7 +38,7 @@ export class Entity1FormComponent implements OnInit {
       private changeDetectorRef: ChangeDetectorRef,
       @Inject(ENTITY1_FEATURE_RESOLVER)
       private dynamicResolver: Entity1FeaturesResolverService,
-      private entity1: Entity1Service
+      private store: Store,
   ) {
     this.dynamicInjector = Injector.create({
       providers: [
@@ -62,36 +65,46 @@ export class Entity1FormComponent implements OnInit {
   });
   public model: any = {};
 
-  async ngOnInit() {
+  ngOnInit() {
     this.mode = this.route.snapshot.params['mode'];
-    const model = await this.entity1.get(parseInt(this.route.snapshot.params['id'], 10));
+
+    if(this.mode === 'edit') {
+      this.store.dispatch(
+          new LoadEntity1Action(parseInt(this.route.snapshot.params['id'], 10)));
+    } else {
+      debugger
+      this.store.dispatch(
+          new ResetEntity1Action());
+    }
+
     this.dynamicComponents =
         this.dynamicResolver.getDynamicFeatures(this.dynamicComponents);
 
-    setTimeout(() => {
-      this.bus.get('model')?.patchValue(model);
-    })
+    this.store.select(selectEntity).pipe(filter(Boolean))
+        .subscribe((model)=>{
+          this.bus.get('model')?.patchValue(model);
+          this.changeDetectorRef.detectChanges();
+    });
   }
 
   ngAfterViewInit() {
     this.changeDetectorRef.detectChanges();
   }
 
-  public async submit() {
-    debugger
+  public submit() {
     if(this.form.invalid) {
-      console.log('FORM IS INVALID');
       this.form.markAllAsTouched();
       return;
     }
     let routRedirect = '../';
     if(this.mode === 'edit') {
       routRedirect += '../';
-      await this.entity1.edit(
-          this.form.value, parseInt(this.route.snapshot.params['id'], 10));
+      const id = parseInt(this.route.snapshot.params['id'], 10);
+      const payload = {...{model: this.form.value}, ...{id: id}};
+      this.store.dispatch(new EditEntity1Action(payload));
     }
     else {
-      await this.entity1.create(this.form.value);
+      this.store.dispatch(new CreateEntity1Action(this.form.value));
     }
     this.router.navigate([routRedirect], { relativeTo: this.route });
   }

@@ -10,7 +10,10 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {MatButtonModule} from "@angular/material/button";
 import {MatTableModule} from "@angular/material/table";
 import {MatIconModule} from "@angular/material/icon";
-import {HttpClientModule} from "@angular/common/http";
+import {StoreModule} from "@ngrx/store";
+import {EffectsModule} from "@ngrx/effects";
+import {entity1Reducer} from "./store/entity1.reducer";
+import {Entity1Effects} from "./store/entity1.effects";
 
 @NgModule({
   declarations: [
@@ -27,6 +30,8 @@ import {HttpClientModule} from "@angular/common/http";
     MatButtonModule,
     MatTableModule,
     MatIconModule,
+    StoreModule.forFeature('entity1', entity1Reducer),
+    EffectsModule.forFeature([Entity1Effects]),
   ]
 })
 export class Entity1Module { }
