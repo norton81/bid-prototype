@@ -22,7 +22,7 @@ const TABLE_DESCRIPTORS = [
     columnComponent: SharedFeatureSimpleColumnComponent,
     columnText: 'Column1',
     columnDef: 'column1',
-    propertyPath: 'field1',
+    propertyPath: '_id',
   },
   {
     cellComponent: SharedFeatureLinkColumnComponent,
@@ -88,7 +88,6 @@ export class Entity1ListComponent implements OnInit {
     this.store.dispatch(new LoadEntities1Action())
     this.store.select(selectEntities).pipe(filter(Boolean))
         .subscribe((model)=>{
-          debugger
       this.dataSource = model;
     });
   }

@@ -1,78 +1,69 @@
-console.log('start');
-var cors = require('cors')
-var express = require('express');
-var app = express();
-var bodyParser = require('body-parser');
+console.log('start Recipient...');
+const cors = require('cors')
+const express = require('express');
+const app = express();
+const bodyParser = require('body-parser');
 
 app.use(bodyParser());
 app.use(cors());
+mongo = require ('mongodb');
+const ObjectId = require('mongodb').ObjectId;
 
-let id = 3;
+const DB_NAME = 'recipient';
+const ENTITY_NAME = 'entity1';
+const CONNECTION = 'mongodb://localhost:27017/';
 
-var store = [
-    {
-        field1: 1, field2: 'Ivan', field3: 'Ivanov', field4: 12,
-        field5: {
-            field7: 'Moscow',
-            field8: true,
-        },
-    },
-    {
-        field1: 2, field2: 'David', field3: 'Abramyan', field4: 22,
-        field5: {
-            field7: 'Erevan',
-            field8: false,
-        },
-    },
-    {
-        field1: 3, field2: 'Petr', field3: 'Petrov', field4: 17,
-        field5: {
-            field7: 'Sankt-Peterburg',
-            field8: true,
-        },
-    },
-];
-
-app.get('/entity1', (req, res) => {
-    res.send(store);
+app.get('/entity1', async (req, res) => {
+    const client = await mongo.MongoClient.connect(CONNECTION);
+    const db = client.db(DB_NAME);
+    await db.collection(ENTITY_NAME).find({}).toArray( async (err, result) => {
+        res.send(result);
+        await client.close();
+    });
 });
 
-app.get('/entity1/:id', (req, res) => {
-    var result = store.find((item) => {
-        return item.field1 === parseInt(req.params.id, 10);
+app.get('/entity1/:id', async (req, res) => {
+    const client = await mongo.MongoClient.connect(CONNECTION);
+    const db = client.db(DB_NAME);
+    const result = await db.collection(ENTITY_NAME).findOne({
+        _id: new ObjectId(req.params.id)
     });
     res.send(result);
+    await client.close();
 });
 
-app.delete('/entity1/:id', (req, res) => {
-    var index = store.findIndex((item) => {
-        console.log(item.field1 === parseInt(req.params.id, 10));
-        return item.field1 === parseInt(req.params.id, 10);
-    });
-
-    if(~index) {
-        store.splice(index, 1)
-    }
-    res.send(store);
+app.delete('/entity1/:id', async (req, res) => {
+    const client = await mongo.MongoClient.connect(CONNECTION);
+    const db = client.db(DB_NAME);
+    await db.collection(ENTITY_NAME).deleteOne( {"_id": ObjectId(req.params.id)});
+    await client.close();
+    res.send({});
 });
 
-app.put('/entity1/:id', (req, res) => {
+app.put('/entity1/:id', async (req, res) => {
     const body = req.body;
-    var index = store.findIndex((item) => {
-        console.log(item.field1 === parseInt(req.params.id, 10));
-        return item.field1 === parseInt(req.params.id, 10);
-    });
-    if(~index) {
-        store.splice(index, 1, body);
-    }
+    delete body._id;
+    const client = await mongo.MongoClient.connect(CONNECTION);
+    const db = client.db(DB_NAME);
+
+    await db.collection(ENTITY_NAME).updateOne({_id: new ObjectId(req.params.id)}, {$set: body});
+
     res.send(body);
+    await client.close();
 });
 
-app.post('/entity1', (req, res) => {
+app.post('/entity1', async (req, res) => {
     const body = req.body;
-    body.field1 = ++id;
-    store.push(body);
-    res.send(body);
+    delete body._id;
+    const client = await mongo.MongoClient.connect(CONNECTION);
+    const db = client.db(DB_NAME);
+    const {insertedId: id} = await db.collection(ENTITY_NAME).insertOne(body);
+
+    const result = await db.collection(ENTITY_NAME).findOne({
+        _id: new ObjectId(id)
+    });
+    await client.close();
+    res.send(result);
 });
 
 app.listen(3001);

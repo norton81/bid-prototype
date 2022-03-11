@@ -10,7 +10,6 @@ import {
 } from "./entity1.action";
 
 export function entity1Reducer(state: IEntity1State, action: AllEntitiesAction) {
-  debugger
   switch (action.type){
     case LOAD_ENTITY1_SUCCESS:
     case CREATE_ENTITY1_SUCCESS:
@@ -44,7 +43,7 @@ export function entity1Reducer(state: IEntity1State, action: AllEntitiesAction) 
     case DELETE_ENTITY1_SUCCESS: {
 
       const entities = state.entities.filter( (item) => {
-        return item.field1 !== action.payload;
+        return item._id !== action.payload;
       });
 
       const result = {

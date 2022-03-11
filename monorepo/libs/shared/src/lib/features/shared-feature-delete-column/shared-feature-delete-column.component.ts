@@ -24,7 +24,7 @@ export class SharedFeatureDeleteColumnComponent implements OnInit {
   }
 
   delete() {
-    this.callbackFn(this.element.field1);
+    this.callbackFn(this.element._id);
   }
 
 }

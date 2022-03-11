@@ -1,0 +1,23 @@
+[
+  {
+    "field1": 1, "field2": "Ivan", "field3": "Ivanov", "field4": 12,
+    "field5": {
+      "field7": "Moscow",
+      "field8": true
+    }
+  },
+  {
+    "field1": 2, "field2": "David", "field3": "Abramyan", "field4": 22,
+    "field5": {
+      "field7": "Erevan",
+      "field8": false
+    }
+  },
+  {
+    "field1": 3, "field2": "Petr", "field3": "Petrov", "field4": 17,
+    "field5": {
+      "field7": "Sankt-Peterburg",
+      "field8": true
+    }
+  }
+]

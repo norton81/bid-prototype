@@ -17,16 +17,15 @@ export class SharedFeature1Component {
   }
 
   ngOnInit() {
-    this.form?.addControl('field1', new FormControl(''));
+    this.form?.addControl('_id', new FormControl(''));
     this.form?.addControl('field2', new FormControl('', Validators.required));
     this.form?.addControl('field3', new FormControl('', Validators.required));
     this.form?.addControl('field4', new FormControl('', Validators.required));
     this.bus.get('model')?.valueChanges.subscribe( (model)=> {
-      debugger
       if(!model) {
         return;
       }
-      this.form?.get('field1')?.patchValue(model.field1);
+      this.form?.get('_id')?.patchValue(model._id);
       this.form?.get('field2')?.patchValue(model?.field2);
       this.form?.get('field3')?.patchValue(model?.field3);
       this.form?.get('field4')?.patchValue(model?.field4);

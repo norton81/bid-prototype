@@ -12,7 +12,7 @@ export class Entity1ColumnFeatureResolverService {
       columnComponent: SharedFeatureSimpleColumnComponent,
       columnText: 'Recipient Column1',
       columnDef: 'column1',
-      propertyPath: 'field1',
+      propertyPath: '_id',
     },...features.slice(1)];
   };
   getDisplayedColumns(): string[] {

@@ -1,5 +1,5 @@
 export interface IEntity {
-  field1: number;
+  _id: number;
 }
 
 export interface IEntity1State {

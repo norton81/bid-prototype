@@ -70,9 +70,8 @@ export class Entity1FormComponent implements OnInit {
 
     if(this.mode === 'edit') {
       this.store.dispatch(
-          new LoadEntity1Action(parseInt(this.route.snapshot.params['id'], 10)));
+          new LoadEntity1Action(this.route.snapshot.params['id']));
     } else {
-      debugger
       this.store.dispatch(
           new ResetEntity1Action());
     }
@@ -99,7 +98,7 @@ export class Entity1FormComponent implements OnInit {
     let routRedirect = '../';
     if(this.mode === 'edit') {
       routRedirect += '../';
-      const id = parseInt(this.route.snapshot.params['id'], 10);
+      const id = this.route.snapshot.params['id'];
       const payload = {...{model: this.form.value}, ...{id: id}};
       this.store.dispatch(new EditEntity1Action(payload));
     }
