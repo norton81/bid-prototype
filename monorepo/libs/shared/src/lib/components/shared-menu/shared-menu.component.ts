@@ -1,7 +1,13 @@
-import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+  Output,
+  EventEmitter
+} from '@angular/core';
 import { MatTreeNestedDataSource } from "@angular/material/tree";
 import { NestedTreeControl } from '@angular/cdk/tree';
-import { SharedMenuNode } from "./shared-menu-node.interface";
+import { SharedMenuNode } from './shared-menu-node.interface';
 
 @Component({
   selector: 'shared-menu',

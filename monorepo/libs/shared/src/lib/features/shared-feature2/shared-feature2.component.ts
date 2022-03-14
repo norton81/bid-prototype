@@ -1,10 +1,18 @@
-import {Component, Inject, OnInit, Optional} from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {
+  Component,
+  Inject,
+  OnInit,
+  Optional
+} from '@angular/core';
+import {
+  FormControl,
+  FormGroup
+} from "@angular/forms";
 import {
   DYNAMIC_FORM,
   DYNAMIC_FORM_CALLBACK,
   DYNAMIC_FORM_SYNC_BUS,
-} from "@monorepo/shared";
+} from '@monorepo/shared';
 
 @Component({
   selector: 'monorepo-shared-feature2',

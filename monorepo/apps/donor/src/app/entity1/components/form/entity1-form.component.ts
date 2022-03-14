@@ -5,8 +5,8 @@ import {
   Injector,
   OnInit,
 } from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
-import {FormBuilder, FormControl} from "@angular/forms";
+import { ActivatedRoute, Router } from '@angular/router';
+import { FormBuilder, FormControl } from '@angular/forms';
 import {
   ENTITY1_FEATURE_RESOLVER,
   DYNAMIC_FORM,
@@ -14,14 +14,18 @@ import {
   DYNAMIC_FORM_MODEL,
   DYNAMIC_FORM_SYNC_BUS,
   SharedFeature2Component
-} from "@monorepo/shared";
-import {SharedFeature1Component} from "@monorepo/shared";
-import {SharedFeature3Component} from "@monorepo/shared";
-import {Entity1FeaturesResolverService} from "../../services/entity1-features-resolver.service";
-import {Store} from "@ngrx/store";
-import {CreateEntity1Action, EditEntity1Action, LoadEntity1Action, ResetEntity1Action} from "../../store/entity1.action";
-import {selectEntity} from "../../store/entity1.selector";
-import {filter} from "rxjs";
+} from '@monorepo/shared';
+import { SharedFeature1Component } from '@monorepo/shared';
+import { SharedFeature3Component } from '@monorepo/shared';
+import { Entity1FeaturesResolverService } from '../../services/entity1-features-resolver.service';
+import { Store } from '@ngrx/store';
+import {
+  CreateEntity1Action,
+  EditEntity1Action,
+  LoadEntity1Action,
+  ResetEntity1Action } from '../../store/entity1.action';
+import { selectEntity } from '../../store/entity1.selector';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'monorepo-entity1-form',

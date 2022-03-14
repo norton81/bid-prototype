@@ -1,6 +1,12 @@
-import {Component, Inject, OnInit} from '@angular/core';
-import {DYNAMIC_FORM_SYNC_BUS} from "@monorepo/shared";
-import {FormControl, FormGroup} from "@angular/forms";
+import {
+  Component, Inject, OnInit
+} from '@angular/core';
+import {
+  DYNAMIC_FORM_SYNC_BUS
+} from '@monorepo/shared';
+import {
+  FormControl, FormGroup
+} from '@angular/forms';
 
 @Component({
   selector: 'monorepo-recipient-feature2',

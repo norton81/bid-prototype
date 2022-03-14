@@ -1,4 +1,4 @@
-import {IEntity1State} from "./entity1.state";
+import {IEntity1State} from './entity1.state';
 import {
   AllEntitiesAction,
   CREATE_ENTITY1_SUCCESS,
@@ -7,7 +7,7 @@ import {
   LOAD_ENTITIES1_SUCCESS,
   LOAD_ENTITY1_SUCCESS,
   RESET_ENTITY1
-} from "./entity1.action";
+} from './entity1.action';
 
 export function entity1Reducer(state: IEntity1State, action: AllEntitiesAction) {
   switch (action.type){

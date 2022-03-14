@@ -1,7 +1,18 @@
-import {Component, Input, EventEmitter, Output, Optional, Inject} from '@angular/core';
-import {IFeature} from "../../IFeature";
-import {FormControl, FormGroup, Validator, Validators} from "@angular/forms";
-import {DYNAMIC_FORM, DYNAMIC_FORM_CALLBACK, DYNAMIC_FORM_MODEL, DYNAMIC_FORM_SYNC_BUS} from "../../constant";
+import {
+  Component,
+  Optional,
+  Inject
+} from '@angular/core';
+import {
+  FormControl,
+  FormGroup,
+  Validators
+} from "@angular/forms";
+import {
+  DYNAMIC_FORM,
+  DYNAMIC_FORM_CALLBACK,
+  DYNAMIC_FORM_SYNC_BUS
+} from '../../constant';
 
 @Component({
   selector: 'shared-feature1',

@@ -1,6 +1,6 @@
-import {Injectable, Type} from '@angular/core';
-import {RecipientFeatureCellCustomComponent} from "../features/recipient-feature-cell-custom/recipient-feature-cell-custom.component";
-import {SharedFeatureSimpleColumnComponent, TableDescriptor} from "@monorepo/shared";
+import { Injectable } from '@angular/core';
+import { RecipientFeatureCellCustomComponent } from "../features/recipient-feature-cell-custom/recipient-feature-cell-custom.component";
+import { SharedFeatureSimpleColumnComponent, TableDescriptor } from "@monorepo/shared";
 
 @Injectable({
   providedIn: 'root'

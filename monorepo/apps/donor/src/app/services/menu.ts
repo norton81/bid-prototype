@@ -1,4 +1,4 @@
-import { SharedMenuNode } from "@monorepo/shared";
+import { SharedMenuNode } from '@monorepo/shared';
 
 export const MENU_DATA: SharedMenuNode[] = [
     {

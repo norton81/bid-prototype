@@ -1,6 +1,9 @@
-import {Component, Inject, OnInit, Optional} from '@angular/core';
-import {TableDescriptor} from "../table-desriptor";
-import {DYNAMIC_TABLE_DESCRIPTOR, DYNAMIC_TABLE_ELEMENT} from "../../constant";
+import {
+  Component,
+  Inject,
+  OnInit} from '@angular/core';
+import { TableDescriptor } from '../table-desriptor';
+import { DYNAMIC_TABLE_DESCRIPTOR, DYNAMIC_TABLE_ELEMENT } from '../../constant';
 
 @Component({
   selector: 'monorepo-shared-feature-simple-column',

@@ -1,5 +1,5 @@
-import { AbstractControl } from "@angular/forms";
-import { EventEmitter } from "@angular/core";
+import { AbstractControl } from '@angular/forms';
+import { EventEmitter } from '@angular/core';
 
 export interface IFeature {
     form: AbstractControl;

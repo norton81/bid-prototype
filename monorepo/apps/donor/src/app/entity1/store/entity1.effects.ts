@@ -22,8 +22,8 @@ import {
     DeleteEntity1FailAction,
     LoadEntities1FailAction
 } from './entity1.action';
-import {Entity1Service} from "../services/entity1.service";
-import {IEntity} from "./entity1.state";
+import { Entity1Service } from '../services/entity1.service';
+import { IEntity } from './entity1.state';
 
 @Injectable()
 export class Entity1Effects {

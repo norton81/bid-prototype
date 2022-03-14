@@ -1,6 +1,9 @@
-import {Component, Inject, OnInit, Optional} from '@angular/core';
-import {DYNAMIC_TABLE_DESCRIPTOR, DYNAMIC_TABLE_ELEMENT} from "../../constant";
-import {TableDescriptor} from "../table-desriptor";
+import {
+  Component,
+  Inject,
+  OnInit} from '@angular/core';
+import {DYNAMIC_TABLE_DESCRIPTOR, DYNAMIC_TABLE_ELEMENT} from '../../constant';
+import {TableDescriptor} from '../table-desriptor';
 
 
 @Component({

@@ -1,5 +1,9 @@
-import {Component, Inject, OnInit, Optional} from '@angular/core';
-import {DYNAMIC_TABLE_DESCRIPTOR, DYNAMIC_TABLE_ELEMENT, TableDescriptor} from "@monorepo/shared";
+import {
+  Component, Inject, OnInit, Optional
+} from '@angular/core';
+import {
+  DYNAMIC_TABLE_DESCRIPTOR, DYNAMIC_TABLE_ELEMENT, TableDescriptor
+} from '@monorepo/shared';
 
 
 @Component({

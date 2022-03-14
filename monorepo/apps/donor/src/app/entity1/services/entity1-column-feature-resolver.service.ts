@@ -1,5 +1,5 @@
-import {Injectable, Type} from '@angular/core';
-import {TableDescriptor} from "@monorepo/shared";
+import { Injectable } from '@angular/core';
+import { TableDescriptor } from "@monorepo/shared";
 
 @Injectable({
   providedIn: 'root'

@@ -1,6 +1,17 @@
-import {Component, Inject, OnInit, Optional} from '@angular/core';
-import {DYNAMIC_TABLE_DESCRIPTOR, DYNAMIC_TABLE_ELEMENT, TableDescriptor} from "@monorepo/shared";
-import {ActivatedRoute, Router} from "@angular/router";
+import {
+  Component,
+  Inject,
+  OnInit
+} from '@angular/core';
+import {
+  DYNAMIC_TABLE_DESCRIPTOR,
+  DYNAMIC_TABLE_ELEMENT,
+  TableDescriptor
+} from '@monorepo/shared';
+import {
+  ActivatedRoute,
+  Router
+} from '@angular/router';
 
 @Component({
   selector: 'monorepo-shared-feature-link-column',

@@ -1,5 +1,13 @@
-import {Directive, Injector, Input} from '@angular/core';
-import {DYNAMIC_TABLE_CALLBACK_FN, DYNAMIC_TABLE_DESCRIPTOR, DYNAMIC_TABLE_ELEMENT} from "@monorepo/shared";
+import {
+  Directive,
+  Injector,
+  Input
+} from '@angular/core';
+import {
+  DYNAMIC_TABLE_CALLBACK_FN,
+  DYNAMIC_TABLE_DESCRIPTOR,
+  DYNAMIC_TABLE_ELEMENT
+} from '@monorepo/shared';
 
 @Directive({
   selector: '[sharedCellContext]',

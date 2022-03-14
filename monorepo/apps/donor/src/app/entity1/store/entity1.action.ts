@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import {IEntity, IEntity1State} from "./entity1.state";
+import { IEntity } from './entity1.state';
 
 export const LOAD_ENTITY1_SUCCESS = 'DONOR ENTITY1 Load Entity Success';
 export class LoadEntity1SuccessAction implements Action {
@@ -24,7 +24,6 @@ export class LoadEntity1Action implements Action {
       this.payload = id;
   }
 }
-
 
 export const CREATE_ENTITY1_SUCCESS = 'DONOR ENTITY1 Create Entity Success';
 export class CreateEntity1SuccessAction implements Action {
@@ -81,7 +80,6 @@ export class ResetEntity1Action implements Action {
   public payload: any;
 }
 
-
 export const LOAD_ENTITIES1_SUCCESS = 'DONOR ENTITY1 Load Entities Success';
 export class LoadEntities1SuccessAction implements Action {
   constructor(payload: IEntity[]) {
@@ -102,7 +100,6 @@ export class LoadEntities1Action implements Action {
   public readonly type = LOAD_ENTITIES1;
   public payload: any;
 }
-
 
 export const DELETE_ENTITY1_SUCCESS = 'DONOR ENTITY1 Delete Entity Success';
 export class DeleteEntity1SuccessAction implements Action {

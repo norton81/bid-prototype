@@ -4,7 +4,7 @@ import {
   DYNAMIC_TABLE_DESCRIPTOR,
   DYNAMIC_TABLE_ELEMENT,
   TableDescriptor
-} from "@monorepo/shared";
+} from '@monorepo/shared';
 
 @Component({
   selector: 'monorepo-shared-feature-delete-column',

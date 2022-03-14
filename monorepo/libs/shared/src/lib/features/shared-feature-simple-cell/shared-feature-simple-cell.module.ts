@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {SharedFeatureSimpleCellComponent} from "./shared-feature-simple-cell.component";
+import {SharedFeatureSimpleCellComponent} from './shared-feature-simple-cell.component';
 
 @NgModule({
     declarations: [

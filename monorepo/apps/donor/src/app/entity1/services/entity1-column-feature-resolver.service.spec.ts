@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import {Entity1ColumnFeatureResolverService} from "./entity1-column-feature-resolver.service";
 
 
-describe('Entity1ColumFeatureResolverService', () => {
+describe('Entity1ColumnFeatureResolverService', () => {
   let service: Entity1ColumnFeatureResolverService;
 
   beforeEach(() => {

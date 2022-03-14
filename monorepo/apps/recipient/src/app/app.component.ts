@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { Router } from "@angular/router";
-import { SharedMenuNode } from "@monorepo/shared";
-import { GlobalConfigService } from "./services/global-config.service";
+import { Router } from '@angular/router';
+import { SharedMenuNode } from '@monorepo/shared';
+import { GlobalConfigService } from './services/global-config.service';
 
 @Component({
   selector: 'monorepo-root',
